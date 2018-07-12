@@ -1,0 +1,57 @@
+* {margin: 0; padding: 0;}
+
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #222;
+  height: 4vh;
+  padding: 10px;
+  color: white;
+}
+
+.App-title {
+  font-size: 2em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+#map{
+  height: 80vh;
+  width: 100%;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  /* width: 500px; */
+}
+
+h3 {
+  font: bold 20px/1.5 Helvetica, Verdana, sans-serif;
+}
+
+li p {
+  font: 200 12px/1.5 Georgia, Times New Roman, serif;
+}
+
+li:hover {
+  background: #eee;
+}
+
+li img {
+  float: left;
+  margin: 0 15px 0 0;
+}
+
+input {
+  width: 100%;
+  padding: 15px 10px;
+  font-size: 1.25em;
+  /* border: none; */
+  outline: none;
+}
