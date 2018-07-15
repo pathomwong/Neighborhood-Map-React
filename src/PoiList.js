@@ -6,6 +6,13 @@ class PoiList extends Component {
     state = {
         query: ''
     }
+
+    componentWillMount(){
+         //this.props.setPoiFoursquareAddress();
+        // console.log('componentDidMount');
+        // console.log(this.props.poiList);
+    }
+
     updateQuery = (query) => {
         this.setState({ query: query.trim() })
     }
@@ -16,6 +23,8 @@ class PoiList extends Component {
 
     render(){
         const poiList = this.props.poiList;
+        //this.props.setPoiFoursquareAddress();
+        console.log(poiList);
         poiList.forEach((poi) => {
             poi.infowindow.close();
             poi.marker.setMap(null);

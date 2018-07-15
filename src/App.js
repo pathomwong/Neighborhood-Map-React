@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import GoogleMap from './GoogleMap';
 import PoiList from './PoiList';
-
+import * as FoursquareAPI from './FoursquareAPI'
 class App extends Component {
   state = {
     map : "",
@@ -24,23 +24,42 @@ class App extends Component {
   }
 
   setPoi = (result) =>{
+   
     this.setState({
       poi: result.map((poi)=>{
+        
         let place = {};
         place.name = poi.name;
         place.lat = poi.geometry.location.lat();
         place.lng = poi.geometry.location.lng();
         place.address = poi.vicinity;
+        //FoursquareAPI.get(place.lat, place.lng).then(data => place.address = data.venues[0].location.formattedAddress.join(' '));
         place.infowindow = poi.infowindow;
         place.marker = poi.marker;
         return place;
-      })
+      
     })
+    //console.log(this.state);
+    
+    })
+    this.setPoiFoursquareAddress();
+    //console.log('setPoi');
     //console.log(this.state);
   }
 
+  setPoiFoursquareAddress = () =>{
+    console.log('setPoiFoursquareAddress');
+    this.setState(this.state.poi.map((place) => {
+      FoursquareAPI.get(place.lat, place.lng)
+        .then(data => {
+          place.address = data.venues[0].location.formattedAddress.join(' ');
+          place.infowindow.setContent(`<div><p><strong>${place.name}</strong></p><p>${place.address}</p></div>`);
+          //console.log(place.address);
+        });
+    }))
+  }
   onclickList = (poi) => {
-    console.log(poi.name);
+    //console.log(poi.name);
     this.state.poi.forEach((p)=> {
       p.infowindow.close();
     });

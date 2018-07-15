@@ -28,7 +28,7 @@ class GoogleMap extends Component {
         var request = {
             location: new window.google.maps.LatLng(30.307182, -97.755996),
             radius: 2700,
-            types: ['museum']
+            types: ['cafe']
 
         };
         
@@ -47,6 +47,7 @@ class GoogleMap extends Component {
                 marker.setMap(map);
                 let infowindow = new window.google.maps.InfoWindow({
                     content: `<div><p><strong>${poi.name}</strong></p><p>${poi.vicinity}</p></div>`
+                    //FoursquareAPI.get(place.lat, place.lng).then(data => place.address = data.venues[0].location.formattedAddress.join(' '));
                 });
 
                 infowindows.push(infowindow);
@@ -61,8 +62,8 @@ class GoogleMap extends Component {
                 return poi
             });
             props.setPoi(poi); 
-        });
-               
+            //props.setPoiFoursquareAddress();
+        });      
     }
 
     render(){
