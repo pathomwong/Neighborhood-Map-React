@@ -24,7 +24,7 @@ class PoiList extends Component {
     render(){
         const poiList = this.props.poiList;
         //this.props.setPoiFoursquareAddress();
-        console.log(poiList);
+        //console.log(poiList);
         poiList.forEach((poi) => {
             poi.infowindow.close();
             poi.marker.setMap(null);
@@ -46,14 +46,14 @@ class PoiList extends Component {
 
         return(
             <div>
-                <div>
-                    <input type="text" placeholder="Search" onChange={(event) => this.updateQuery(event.target.value)}/>
+                <div id="search">
+                    <input id="search-textbox" type="text" placeholder="Search" onChange={(event) => this.updateQuery(event.target.value)} role="search"
+                        aria-labelledby="search"/>
                 </div>
                 <div id="poi-list">
                     <ul>
                         {showingPoi.map((poi, index) => (
-                                <li key={index} onClick={()=>this.props.onclickList(poi)}>
-                                    {/* <img src="" /> */}
+                            <li key={index} onClick={() => this.props.onclickList(poi)} role="button" tabIndex="0">
                                     <h3>{poi.name}</h3>
                                     <p>{poi.address}</p>
                                 </li>

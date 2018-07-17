@@ -1,3 +1,4 @@
+/* For mobile phones: */
 * {margin: 0; padding: 0;}
 
 .App {
@@ -6,9 +7,11 @@
 
 .App-header {
   background-color: #222;
-  height: 4vh;
+  height: 5vh;
   padding: 10px;
   color: white;
+  position: fixed;
+  width: 100%;
 }
 
 .App-title {
@@ -19,8 +22,17 @@
   font-size: large;
 }
 
+#map-container {
+    background: blue none repeat scroll 0 0;
+    height: 50%;
+    position: fixed;
+    right: 0;
+    width: 100%;
+    top: 8.5vh;
+}
+
 #map{
-  height: 80vh;
+  height: 100%;
   width: 100%;
 }
 
@@ -53,5 +65,95 @@ input {
   padding: 15px 10px;
   font-size: 1.25em;
   /* border: none; */
-  outline: none;
+  /* outline: none; */
 }
+
+#poi-list-container{
+    border-bottom: 1px solid #d9d9d9;
+    border-top: 1px solid #fff;
+    /* padding: 140px 40px 30px; */
+    padding-top: 58vh;
+  }
+  #search{
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+  }
+
+#poi-list{
+    padding-top: 3.5em;
+  }
+
+@media only screen and (min-width: 500px) {
+   #map-container {
+    top: 11vh;
+  }
+
+  .App-title {
+    font-size: 1em;
+  }
+
+}
+
+@media only screen and (min-width: 760px) {
+   #map-container {
+    background: blue none repeat scroll 0 0;
+    height: 94%;
+    position: fixed;
+    right: 0;
+    top: 6vh;
+    width: 70%;
+  }
+
+  #map {
+    background-color: #ccc;
+    height: 100%;
+    width: 100%;
+  }
+  header{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+  }
+  footer{
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+  #poi-list-container{
+    border-bottom: 1px solid #d9d9d9;
+    border-top: 1px solid #fff;
+    /* padding: 140px 40px 30px; */
+    padding-top: 8vh;
+    width: 30%;
+  }
+
+  #search{
+    position: fixed;
+    width: 30%;
+    /* z-index: 1000; */
+    top: 7vh;
+  }
+
+  #search-textbox{
+     box-sizing: border-box;
+     margin: 0;
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  #search{
+    top: 7.5vh;
+  }
+
+}
+
+/* @media only screen and (min-width: 1025px) {
+  #search{
+    top: 7.5vh;
+  }
+
+} */

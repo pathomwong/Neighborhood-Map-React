@@ -3,6 +3,7 @@ import './App.css';
 import GoogleMap from './GoogleMap';
 import PoiList from './PoiList';
 import * as FoursquareAPI from './FoursquareAPI'
+
 class App extends Component {
   state = {
     map : "",
@@ -13,8 +14,8 @@ class App extends Component {
       //   lat: 30.274722,
       //   lng: -97.740556,
       //   address: "1100 Congress Ave, Austin, TX 78701"
-      //   infowindow: 
-      //   marker: 
+      //   infowindow: fn
+      //   marker: fn
       // }
     ]
   };
@@ -52,10 +53,15 @@ class App extends Component {
     this.setState(this.state.poi.map((place) => {
       FoursquareAPI.get(place.lat, place.lng)
         .then(data => {
-          place.address = data.venues[0].location.formattedAddress.join(' ');
+          place.address = '';
+          if (data.venues){
+            place.address = data.venues[0].location.formattedAddress.join(' ');
+          }
           place.infowindow.setContent(`<div><p><strong>${place.name}</strong></p><p>${place.address}</p></div>`);
           //console.log(place.address);
+          
         });
+        return place;
     }))
   }
   onclickList = (poi) => {
@@ -78,13 +84,13 @@ class App extends Component {
           <section id="map-container" role="application" aria-label="Google Map">
             <GoogleMap poiList={this.state.poi} setPoi={this.setPoi} setMap={this.setMap} map={this.state.map}/>
           </section>
-          <section id="poi-list-container">
+          <section id="poi-list-container" aria-label="POI List">
             <PoiList poiList={this.state.poi} onclickList={this.onclickList} map={this.state.map}/>
           </section>
         </main>
-        <footer>
+        {/* <footer>
           Copyright (c) 2018 <a href="/"><strong>Neighborhood Map</strong></a> All Rights Reserved.
-        </footer>
+        </footer> */}
       </div>
     );
   }
