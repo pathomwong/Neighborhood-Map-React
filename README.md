@@ -7,9 +7,10 @@ Neighborhood Map React is a single-page application using React featuring a map 
   * run command ```npm install```
 
   If you want to run in develop mode
-    * run command ```npm start```
+  * run command ```npm start```
 
   To see the actual result
-    * run command ```npm run build```
-    * run command ```serve -s build```
-    * in browser open ```http://localhost:5000```
+
+  * run command ```npm run build```
+  * run command ```serve -s build```
+  * in browser open ```http://localhost:5000```
