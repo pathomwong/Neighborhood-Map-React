@@ -1,7 +1,7 @@
-#Neighborhood Map React
+# Neighborhood Map React
 Neighborhood Map React is a single-page application using React featuring a map of the cafe in the neighborhood, we can visit. It include map markers to identify cafe locations, a search function to easily discover these locations, and a list view to support simple browsing of all locations.
 
-##Instructions
+## Instructions
   * Clone this project with ```git clone https://github.com/pathomwong/Neighborhood-Map-React.git```
   * open command propmt or terminal and got to project directory
   * run command ```npm install```
