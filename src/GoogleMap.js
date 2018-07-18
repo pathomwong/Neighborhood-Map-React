@@ -23,6 +23,7 @@ class GoogleMap extends Component {
         props.setMap(map);
 
         let infowindows = [];
+        let markers = [];
         var service = new window.google.maps.places.PlacesService(this.props.map);
         var request = {
             location: new window.google.maps.LatLng(30.307182, -97.755996),
@@ -47,6 +48,7 @@ class GoogleMap extends Component {
                 });
 
                 infowindows.push(infowindow);
+                markers.push(marker);
                 poi.infowindow = infowindow;
                 poi.marker = marker;
                 marker.addListener("click", function () {
@@ -54,6 +56,10 @@ class GoogleMap extends Component {
                         infowindows[i].close();
                     }
                     infowindow.open(map, marker);
+                    for (var i = 0; i < markers.length; i++) {
+                        markers[i].setAnimation(null);
+                    }
+                    marker.setAnimation(window.google.maps.Animation.BOUNCE);
                 });
                 return poi
             });
