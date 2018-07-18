@@ -11,7 +11,7 @@ Neighborhood Map React is a single-page application using React featuring a map 
   If you want to run in develop mode
   * run command ```npm start```
 
-  To see this project in production mode (the service worker will be run to this mode.)
+  To see this project in production mode (the service worker will be run in this mode.)
   * run command ```npm run build```
   * run command ```serve -s build```
   * in browser open ```http://localhost:5000```
