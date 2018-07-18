@@ -20,10 +20,18 @@ class App extends Component {
     ]
   };
 
+  /**
+ * Set map variable to the state, so it can send as prop
+ * @param {m} map object
+ */
   setMap = (m)=>{
     this.setState({map: m});
   }
 
+  /**
+ * build and set POI to the state
+ * @param {result} data from google map.
+ */
   setPoi = (result) =>{
    
     this.setState({
@@ -34,22 +42,20 @@ class App extends Component {
         place.lat = poi.geometry.location.lat();
         place.lng = poi.geometry.location.lng();
         place.address = poi.vicinity;
-        //FoursquareAPI.get(place.lat, place.lng).then(data => place.address = data.venues[0].location.formattedAddress.join(' '));
         place.infowindow = poi.infowindow;
         place.marker = poi.marker;
         return place;
       
     })
-    //console.log(this.state);
     
     })
     this.setPoiFoursquareAddress();
-    //console.log('setPoi');
-    //console.log(this.state);
   }
 
+  /**
+ * set address that got from foursquare to state [poi]
+ */
   setPoiFoursquareAddress = () =>{
-    console.log('setPoiFoursquareAddress');
     this.setState(this.state.poi.map((place) => {
       FoursquareAPI.get(place.lat, place.lng)
         .then(data => {
@@ -57,20 +63,24 @@ class App extends Component {
           if (data.venues){
             place.address = data.venues[0].location.formattedAddress.join(' ');
           }
-          place.infowindow.setContent(`<div><p><strong>${place.name}</strong></p><p>${place.address}</p></div>`);
-          //console.log(place.address);
+          place.infowindow.setContent(`<div><p><strong>${place.name}</strong></p><p>${place.address}</p><p calss="by">Address by Foursquare</p></div>`);
           
         });
         return place;
     }))
   }
+  /**
+ * click event handler
+ * @param {poi} the location point
+ */
   onclickList = (poi) => {
-    //console.log(poi.name);
     this.state.poi.forEach((p)=> {
       p.infowindow.close();
+      p.marker.setAnimation(null);
     });
 
     poi.infowindow.open(this.state.map, poi.marker);
+    poi.marker.setAnimation(window.google.maps.Animation.BOUNCE);
     
   }
 
@@ -88,9 +98,6 @@ class App extends Component {
             <PoiList poiList={this.state.poi} onclickList={this.onclickList} map={this.state.map}/>
           </section>
         </main>
-        {/* <footer>
-          Copyright (c) 2018 <a href="/"><strong>Neighborhood Map</strong></a> All Rights Reserved.
-        </footer> */}
       </div>
     );
   }

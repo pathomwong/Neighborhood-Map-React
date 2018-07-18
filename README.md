@@ -6,11 +6,17 @@ Neighborhood Map React is a single-page application using React featuring a map 
   * open command propmt or terminal and got to project directory
   * run command ```npm install```
 
+  >by default, the create-react-app service worker is registered in the production build.
+
   If you want to run in develop mode
   * run command ```npm start```
 
-  To see the actual result
-
+  To see this project in production mode (the service worker will be run to this mode.)
   * run command ```npm run build```
   * run command ```serve -s build```
   * in browser open ```http://localhost:5000```
+
+## API use in this project
+* Google Map API
+* Google Place API
+* Foursquare API

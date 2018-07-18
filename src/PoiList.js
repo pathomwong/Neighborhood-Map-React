@@ -7,24 +7,23 @@ class PoiList extends Component {
         query: ''
     }
 
-    componentWillMount(){
-         //this.props.setPoiFoursquareAddress();
-        // console.log('componentDidMount');
-        // console.log(this.props.poiList);
-    }
-
+     /**
+     * set query string to state
+     * @param {query} query string from textbox
+     */
     updateQuery = (query) => {
         this.setState({ query: query.trim() })
     }
 
+     /**
+     * Clear query string in state
+     */
     clearQuery = () => {
         this.setState({ query: '' });
     }
 
     render(){
         const poiList = this.props.poiList;
-        //this.props.setPoiFoursquareAddress();
-        //console.log(poiList);
         poiList.forEach((poi) => {
             poi.infowindow.close();
             poi.marker.setMap(null);
@@ -32,6 +31,7 @@ class PoiList extends Component {
         const { query } = this.state;
         let showingPoi;
         if (query) {
+            //filter the location
             const match = new RegExp(escapeRegExp(query), 'i');
             showingPoi = poiList.filter((poi) => match.test(poi.name))
         } else {
@@ -40,6 +40,7 @@ class PoiList extends Component {
 
         showingPoi.sort(sortBy('name'));
         showingPoi.forEach((poi) => {
+            //set animation on selected point
             poi.marker.setAnimation(window.google.maps.Animation.DROP)
             poi.marker.setMap(this.props.map);
         })

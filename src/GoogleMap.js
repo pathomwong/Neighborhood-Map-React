@@ -21,8 +21,7 @@ class GoogleMap extends Component {
             zoom: 12
         });
         props.setMap(map);
-  
-        //console.log(this.props);
+
         let infowindows = [];
         var service = new window.google.maps.places.PlacesService(this.props.map);
         var request = {
@@ -33,9 +32,7 @@ class GoogleMap extends Component {
         };
         
         service.nearbySearch(request, function (result, status) {
-            //console.log(result);
-            
-            //console.log(this.props.poiList);
+
             let poi = result.map((poi) => {
                 let marker = new window.google.maps.Marker(
                     {
@@ -46,8 +43,7 @@ class GoogleMap extends Component {
                 );
                 marker.setMap(map);
                 let infowindow = new window.google.maps.InfoWindow({
-                    content: `<div><p><strong>${poi.name}</strong></p><p>${poi.vicinity}</p></div>`
-                    //FoursquareAPI.get(place.lat, place.lng).then(data => place.address = data.venues[0].location.formattedAddress.join(' '));
+                    content: `<div><p><strong>${poi.name}</strong></p><p>${poi.vicinity}</p><p calss="by">Address by Google Place</p></div>`
                 });
 
                 infowindows.push(infowindow);
@@ -62,7 +58,6 @@ class GoogleMap extends Component {
                 return poi
             });
             props.setPoi(poi); 
-            //props.setPoiFoursquareAddress();
         });      
     }
 

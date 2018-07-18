@@ -40,7 +40,6 @@ ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  /* width: 500px; */
 }
 
 h3 {
@@ -64,14 +63,11 @@ input {
   width: 100%;
   padding: 15px 10px;
   font-size: 1.25em;
-  /* border: none; */
-  /* outline: none; */
 }
 
 #poi-list-container{
     border-bottom: 1px solid #d9d9d9;
     border-top: 1px solid #fff;
-    /* padding: 140px 40px 30px; */
     padding-top: 58vh;
   }
   #search{
@@ -133,7 +129,6 @@ input {
   #search{
     position: fixed;
     width: 30%;
-    /* z-index: 1000; */
     top: 7vh;
   }
 
@@ -150,10 +145,3 @@ input {
   }
 
 }
-
-/* @media only screen and (min-width: 1025px) {
-  #search{
-    top: 7.5vh;
-  }
-
-} */
