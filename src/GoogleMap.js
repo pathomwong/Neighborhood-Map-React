@@ -44,7 +44,7 @@ class GoogleMap extends Component {
                 );
                 marker.setMap(map);
                 let infowindow = new window.google.maps.InfoWindow({
-                    content: `<div><p><strong>${poi.name}</strong></p><p>${poi.vicinity}</p><p calss="by">Address by Google Place</p></div>`
+                    content: `<div><p><strong>${poi.name}</strong></p><p>${poi.vicinity}</p><p class="by">Address by Google Place</p></div>`
                 });
 
                 infowindows.push(infowindow);
@@ -61,6 +61,13 @@ class GoogleMap extends Component {
                     }
                     marker.setAnimation(window.google.maps.Animation.BOUNCE);
                 });
+
+                window.google.maps.event.addListener(infowindow, 'closeclick', function () {
+                    for (var i = 0; i < markers.length; i++) {
+                        markers[i].setAnimation(null);
+                    }
+                });  
+
                 return poi
             });
             props.setPoi(poi); 

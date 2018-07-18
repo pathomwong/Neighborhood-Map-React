@@ -31,6 +31,10 @@
     top: 8.5vh;
 }
 
+.by {
+  float:right;
+  font-size: 0.7em;
+}
 #map{
   height: 100%;
   width: 100%;

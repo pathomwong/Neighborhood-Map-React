@@ -63,7 +63,7 @@ class App extends Component {
           if (data.venues){
             place.address = data.venues[0].location.formattedAddress.join(' ');
           }
-          place.infowindow.setContent(`<div><p><strong>${place.name}</strong></p><p>${place.address}</p><p calss="by">Address by Foursquare</p></div>`);
+          place.infowindow.setContent(`<div><p><strong>${place.name}</strong></p><p>${place.address}</p><p class="by">Address by Foursquare</p></div>`);
           
         });
         return place;
